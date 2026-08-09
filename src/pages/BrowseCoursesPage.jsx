@@ -40,7 +40,7 @@ export default function BrowseCoursesPage({ onSelectCourse, searchQuery, setSear
       <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-8 sm:p-10 border border-slate-800 shadow-xl">
         <div className="max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 text-xs font-mono font-bold px-3 py-1 rounded-full border border-emerald-500/30">
-            <Sparkles className="w-3.5 h-3.5" /> G.C.E. O/L & A/L Science Catalog
+            <Sparkles className="w-3.5 h-3.5" /> G.C.E. O/L Science Catalog
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold font-heading">
             Browse Science Courses

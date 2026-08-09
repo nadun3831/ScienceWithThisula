@@ -44,7 +44,7 @@ export default function Navbar({ activePage, setActivePage, activeRole, setActiv
                 </span>
               </div>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 font-sans hidden sm:block">
-                Master O/L & A/L Science with Motion
+                Master G.C.E. O/L Science with Motion
               </p>
             </div>
           </div>

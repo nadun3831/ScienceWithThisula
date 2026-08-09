@@ -4,15 +4,15 @@ export const LECTURER_INFO = {
   name: "Lecturer Thisula",
   title: "Head Science Lecturer & Visual Educator",
   qualifications: "B.Sc. (Hons) Special in Science, National Education Certified",
-  experience: "12+ Years O/L & A/L Teaching",
+  experience: "12+ Years O/L Science Teaching",
   studentsTaught: "45,000+",
   passRate: "98.4% A/B Rate",
   photo: "/Thisula.jpeg",
-  bio: "Specialist in transforming complex Biology, Chemistry, and Physics concepts into interactive visual models and high-scoring exam techniques for O/L and A/L Sri Lankan students.",
+  bio: "Specialist in transforming complex Biology, Chemistry, and Physics concepts into interactive visual models and high-scoring exam techniques for G.C.E. O/L Sri Lankan students.",
   achievements: [
     "Pioneer of Motion Science Education in Sri Lanka",
     "Author of G.C.E. O/L Science Model Paper Series",
-    "Produced 150+ Island Rankers in O/L & A/L Science Streams"
+    "Produced 150+ Island Rankers in G.C.E. O/L Science"
   ]
 };
 

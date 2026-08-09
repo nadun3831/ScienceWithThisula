@@ -38,7 +38,7 @@ export default function HomePage({ onSelectCourse, setActivePage }) {
             </div>
 
             <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
-              Master O/L & A/L Science with <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-300 to-teal-400">Interactive Motion</span>
+              Master G.C.E. O/L Science with <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-300 to-teal-400">Interactive Motion</span>
             </h1>
 
             <p className="text-base sm:text-lg text-slate-300 max-w-2xl font-sans leading-relaxed">
@@ -83,7 +83,7 @@ export default function HomePage({ onSelectCourse, setActivePage }) {
 
           </div>
 
-          {/* Right Column: Clean Lecturer Photo portrait (No box) */}
+          {/* Right Column: Clean Lecturer Photo portrait */}
           <div className="lg:col-span-5">
             <ThreeLecturerCard />
           </div>
