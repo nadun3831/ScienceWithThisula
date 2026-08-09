@@ -6,13 +6,13 @@ import { LECTURER_INFO, COURSES, TESTIMONIALS } from '../data/mockData';
 import { 
   Sparkles, 
   Atom, 
-  Award, 
   BookOpen, 
   ArrowRight, 
   PlayCircle, 
   GraduationCap,
   Star,
-  ShieldCheck
+  ShieldCheck,
+  FileCheck
 } from 'lucide-react';
 
 export default function HomePage({ onSelectCourse, setActivePage }) {
@@ -121,13 +121,13 @@ export default function HomePage({ onSelectCourse, setActivePage }) {
 
           <div className="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
             <div className="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-5">
-              <Award className="w-6 h-6" />
+              <FileCheck className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white mb-2">
-              Printable Certified Diplomas
+              Past Paper Discussions
             </h3>
             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Earn official certificates upon 100% course completion signed by Lecturer Thisula with unique verification codes.
+              Line-by-line past paper analysis with marking scheme secrets and scoring keyword strategies guided by Lecturer Thisula.
             </p>
           </div>
 

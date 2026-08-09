@@ -3,26 +3,43 @@ import {
   Atom, 
   Search, 
   Bell, 
-  Award, 
   BookOpen, 
   User, 
   Sparkles, 
   LayoutDashboard, 
   Menu, 
   X,
-  GraduationCap
+  GraduationCap,
+  Lock,
+  LogOut
 } from 'lucide-react';
 import { LECTURER_INFO } from '../data/mockData';
 
-export default function Navbar({ activePage, setActivePage, activeRole, setActiveRole, searchQuery, setSearchQuery }) {
+export default function Navbar({ 
+  activePage, 
+  setActivePage, 
+  activeRole, 
+  isLoggedInAsLecturer,
+  onOpenInstructorLogin,
+  onLecturerLogout,
+  searchQuery, 
+  setSearchQuery 
+}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
 
   const notificationsList = [
     { id: 1, text: "New Cell Biology Quiz added!", time: "10 mins ago", unread: true },
-    { id: 2, text: "Certificate issued for Past Paper Masterclass", time: "2 hours ago", unread: true },
-    { id: 3, text: "Lecturer Thisula updated Physics Snell's Law video", time: "1 day ago", unread: false }
+    { id: 2, text: "Lecturer Thisula updated Physics Snell's Law video", time: "1 day ago", unread: false }
   ];
+
+  const handleInstructorClick = () => {
+    if (isLoggedInAsLecturer) {
+      setActivePage('instructor');
+    } else {
+      onOpenInstructorLogin();
+    }
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
@@ -85,25 +102,16 @@ export default function Navbar({ activePage, setActivePage, activeRole, setActiv
             </button>
 
             <button
-              onClick={() => setActivePage('certificates')}
-              className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 ${
-                activePage === 'certificates'
-                  ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 font-semibold'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-emerald-600 hover:bg-slate-50 dark:hover:bg-slate-800'
-              }`}
-            >
-              <Award className="w-4 h-4" /> Certificates
-            </button>
-
-            <button
-              onClick={() => setActivePage('instructor')}
+              onClick={handleInstructorClick}
               className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 ${
                 activePage === 'instructor'
                   ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 font-semibold'
                   : 'text-slate-600 dark:text-slate-300 hover:text-emerald-600 hover:bg-slate-50 dark:hover:bg-slate-800'
               }`}
             >
-              <LayoutDashboard className="w-4 h-4 text-emerald-600" /> Instructor Panel
+              <LayoutDashboard className="w-4 h-4 text-emerald-600" />
+              <span>Instructor Panel</span>
+              {!isLoggedInAsLecturer && <Lock className="w-3 h-3 text-amber-500 ml-0.5" />}
             </button>
           </div>
 
@@ -153,15 +161,33 @@ export default function Navbar({ activePage, setActivePage, activeRole, setActiv
               )}
             </div>
 
-            {/* Role Switcher Pill */}
-            <button
-              onClick={() => setActiveRole(activeRole === 'student' ? 'instructor' : 'student')}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-sm"
-              title="Toggle between Student view & Instructor Lecturer View"
-            >
-              <User className="w-3.5 h-3.5" />
-              <span>Role: {activeRole === 'student' ? 'Student' : 'Lecturer Thisula'}</span>
-            </button>
+            {/* Role / Authentication Badge */}
+            {isLoggedInAsLecturer ? (
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setActivePage('instructor')}
+                  className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-sm"
+                >
+                  <User className="w-3.5 h-3.5" />
+                  <span>Lecturer Thisula (Admin)</span>
+                </button>
+                <button
+                  onClick={onLecturerLogout}
+                  title="Logout from Lecturer account"
+                  className="p-1.5 rounded-full text-slate-500 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
+                >
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={onOpenInstructorLogin}
+                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700"
+              >
+                <Lock className="w-3.5 h-3.5 text-amber-500" />
+                <span>Lecturer Login</span>
+              </button>
+            )}
 
             {/* User Avatar */}
             <div className="flex items-center gap-2">
@@ -169,7 +195,7 @@ export default function Navbar({ activePage, setActivePage, activeRole, setActiv
                 src={LECTURER_INFO.photo}
                 alt="Lecturer Thisula"
                 className="w-9 h-9 rounded-full object-cover border-2 border-emerald-500 cursor-pointer shadow"
-                onClick={() => setActivePage('instructor')}
+                onClick={handleInstructorClick}
               />
             </div>
 
@@ -207,16 +233,11 @@ export default function Navbar({ activePage, setActivePage, activeRole, setActiv
             My Learning
           </button>
           <button
-            onClick={() => { setActivePage('certificates'); setIsMobileMenuOpen(false); }}
-            className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+            onClick={() => { handleInstructorClick(); setIsMobileMenuOpen(false); }}
+            className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 flex items-center justify-between"
           >
-            Certificates
-          </button>
-          <button
-            onClick={() => { setActivePage('instructor'); setIsMobileMenuOpen(false); }}
-            className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40"
-          >
-            Instructor Panel
+            <span>Instructor Panel</span>
+            {!isLoggedInAsLecturer && <Lock className="w-3.5 h-3.5 text-amber-500" />}
           </button>
         </div>
       )}

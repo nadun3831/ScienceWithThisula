@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import QuizModal from '../components/QuizModal';
-import CertificateModal from '../components/CertificateModal';
 import { 
   PlayCircle, 
   FileText, 
   CheckCircle2, 
   HelpCircle, 
-  Award, 
   Download, 
   BookOpen,
   ArrowLeft
@@ -19,7 +17,6 @@ export default function LearningCoursePage({ course, onBack }) {
   const [passedQuizIds, setPassedQuizIds] = useState([]);
   const [showQuizModal, setShowQuizModal] = useState(false);
   const [activeQuiz, setActiveQuiz] = useState(null);
-  const [showCertModal, setShowCertModal] = useState(false);
 
   // Total lessons count & calculation
   const totalLessons = course.sections.reduce((acc, sec) => acc + sec.lessons.length, 0);
@@ -68,28 +65,18 @@ export default function LearningCoursePage({ course, onBack }) {
           </div>
         </div>
 
-        {/* Progress Badge & Certificate CTA */}
-        <div className="flex items-center gap-4">
-          <div className="text-right">
-            <span className="text-xs text-slate-500 font-mono">Course Completion</span>
-            <div className="flex items-center gap-2">
-              <div className="w-32 h-2.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-emerald-500 transition-all duration-500" 
-                  style={{ width: `${progressPercent}%` }} 
-                />
-              </div>
-              <span className="text-xs font-bold font-mono text-emerald-600">{progressPercent}%</span>
+        {/* Progress Bar */}
+        <div className="text-right">
+          <span className="text-xs text-slate-500 font-mono">Course Completion</span>
+          <div className="flex items-center gap-2">
+            <div className="w-36 h-2.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-emerald-500 transition-all duration-500" 
+                style={{ width: `${progressPercent}%` }} 
+              />
             </div>
+            <span className="text-xs font-bold font-mono text-emerald-600">{progressPercent}%</span>
           </div>
-
-          <button
-            onClick={() => setShowCertModal(true)}
-            className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shadow flex items-center gap-1.5"
-          >
-            <Award className="w-4 h-4 text-amber-300" />
-            <span>Certificate</span>
-          </button>
         </div>
       </div>
 
@@ -267,14 +254,6 @@ export default function LearningCoursePage({ course, onBack }) {
           quiz={activeQuiz}
           onClose={() => setShowQuizModal(false)}
           onPassQuiz={handlePassQuiz}
-        />
-      )}
-
-      {/* Certificate Modal */}
-      {showCertModal && (
-        <CertificateModal
-          course={course}
-          onClose={() => setShowCertModal(false)}
         />
       )}
 

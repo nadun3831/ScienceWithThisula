@@ -46,8 +46,8 @@ export default function Footer({ setActivePage }) {
                 </button>
               </li>
               <li>
-                <button onClick={() => setActivePage('certificates')} className="hover:text-emerald-400 transition-colors">
-                  Verify Certificate
+                <button onClick={() => setActivePage('instructor')} className="hover:text-emerald-400 transition-colors">
+                  Instructor Panel
                 </button>
               </li>
             </ul>
