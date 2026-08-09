@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_4 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_4" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_4');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  
+const container = document.getElementById('threejs-container') || document.body;
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+scene.add(ambientLight);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+directionalLight.position.set(5, 5, 5);
+scene.add(directionalLight);
+
+// Creating a stylized "Instructor" representation
+// Using basic geometries to build a silhouette
+const group = new THREE.Group();
+
+// Body (Stylized torso)
+const bodyGeometry = new THREE.CapsuleGeometry(0.5, 1, 4, 16);
+const bodyMaterial = new THREE.MeshPhongMaterial({ color: 0x2e3a8c }); // Use primary color
+const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+group.add(body);
+
+// Head
+const headGeometry = new THREE.SphereGeometry(0.35, 32, 32);
+const headMaterial = new THREE.MeshPhongMaterial({ color: 0xffdbac }); // Skin tone approx
+const head = new THREE.Mesh(headGeometry, headMaterial);
+head.position.y = 1.1;
+group.add(head);
+
+// Certificate (Representing the one in the photo)
+const certGeometry = new THREE.PlaneGeometry(0.8, 0.6);
+const certMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide });
+const cert = new THREE.Mesh(certGeometry, certMaterial);
+cert.position.set(0.6, 0.5, 0.4);
+cert.rotation.y = -0.4;
+group.add(cert);
+
+// Medal (Stylized circle)
+const medalGeometry = new THREE.CircleGeometry(0.1, 32);
+const medalMaterial = new THREE.MeshBasicMaterial({ color: 0xffd700 });
+const medal = new THREE.Mesh(medalGeometry, medalMaterial);
+medal.position.set(0, 0.4, 0.51);
+group.add(medal);
+
+scene.add(group);
+camera.position.z = 4;
+
+// Animation loop
+function animate() {
+  requestAnimationFrame(animate);
+  
+  // Subtle hovering motion
+  group.position.y = Math.sin(Date.now() * 0.002) * 0.1;
+  group.rotation.y = Math.sin(Date.now() * 0.001) * 0.2;
+  
+  // Certificate slight tilt
+  cert.rotation.z = Math.sin(Date.now() * 0.0015) * 0.1;
+
+  renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+  const newWidth = container.clientWidth || window.innerWidth;
+  const newHeight = container.clientHeight || window.innerHeight;
+  camera.aspect = newWidth / newHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(newWidth, newHeight);
+});
+
+animate();
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_4 -->
+</body>
+</html>
