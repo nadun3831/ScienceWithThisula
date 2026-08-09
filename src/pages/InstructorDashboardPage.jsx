@@ -129,7 +129,7 @@ export default function InstructorDashboardPage({ onSelectCourse }) {
             <thead>
               <tr className="border-b border-slate-200 dark:border-slate-700 text-slate-500 font-mono">
                 <th className="py-3 px-4">Course Name</th>
-                <th className="py-3 px-4">Subject</th>
+                <th className="py-3 px-4">Category</th>
                 <th className="py-3 px-4">Grade</th>
                 <th className="py-3 px-4">Students</th>
                 <th className="py-3 px-4">Rating</th>
@@ -191,10 +191,10 @@ export default function InstructorDashboardPage({ onSelectCourse }) {
                   onChange={e => setNewSubject(e.target.value)}
                   className="w-full mt-1 p-2.5 text-xs rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
                 >
-                  <option value="Biology">Biology</option>
                   <option value="Chemistry">Chemistry</option>
                   <option value="Physics">Physics</option>
-                  <option value="Combined Science">Combined Science</option>
+                  <option value="Biology">Biology</option>
+                  <option value="Past Paper Discussion">Past Paper Discussion</option>
                 </select>
               </div>
 

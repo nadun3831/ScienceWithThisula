@@ -185,9 +185,9 @@ export const COURSES = [
   },
   {
     id: "course-pastpaper-1",
-    title: "G.C.E. O/L 10-Year Past Paper Masterclass & Model Papers",
+    title: "G.C.E. O/L 10-Year Past Paper Discussion Masterclass",
     slug: "ol-past-paper-masterclass",
-    subject: "Combined Science",
+    subject: "Past Paper Discussion",
     grade: "Grade 11 O/L",
     level: "Exam Revision",
     rating: 5.0,
@@ -242,6 +242,6 @@ export const TESTIMONIALS = [
     school: "Dharmasoka College, Ambalangoda",
     grade: "O/L Science - A Grade",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-    text: "The past paper masterclass provided exact keywords that appeared in the final government marking scheme. Highly recommended!"
+    text: "The past paper discussion masterclass provided exact keywords that appeared in the final government marking scheme. Highly recommended!"
   }
 ];

@@ -18,7 +18,7 @@ export default function Footer({ setActivePage }) {
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Sri Lanka's premier Motion LMS platform dedicated to G.C.E. O/L and A/L Science excellence with Lecturer Thisula.
+              Sri Lanka's premier LMS platform dedicated to Chemistry, Physics, Biology & Past Paper Discussion excellence with Lecturer Thisula.
             </p>
             <div className="flex items-center gap-2 text-xs text-emerald-400 font-semibold">
               <ShieldCheck className="w-4 h-4" />
@@ -55,13 +55,13 @@ export default function Footer({ setActivePage }) {
 
           {/* Subjects Covered */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Subjects Covered</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Subject Categories</h4>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li>• O/L Biology & Human Systems</li>
-              <li>• O/L Chemistry & Atomic Bonding</li>
-              <li>• O/L Physics & Optics Ray Diagrams</li>
-              <li>• G.C.E. O/L 10-Year Past Paper Masterclass</li>
-              <li>• Grade 10 & 11 Term Test Revisions</li>
+              <li>• Chemistry</li>
+              <li>• Physics</li>
+              <li>• Biology</li>
+              <li>• Past Paper Discussion</li>
+              <li>• Grade 10 & 11 Model Papers</li>
             </ul>
           </div>
 

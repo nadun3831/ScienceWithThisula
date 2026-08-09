@@ -8,7 +8,7 @@ export default function BrowseCoursesPage({ onSelectCourse, searchQuery, setSear
   const [selectedGrade, setSelectedGrade] = useState('All');
   const [priceFilter, setPriceFilter] = useState('All'); // 'All', 'Free', 'Paid'
 
-  const subjects = ['All', 'Biology', 'Chemistry', 'Physics', 'Combined Science'];
+  const subjects = ['All', 'Chemistry', 'Physics', 'Biology', 'Past Paper Discussion'];
 
   const filteredCourses = COURSES.filter(course => {
     // Subject check
@@ -43,10 +43,10 @@ export default function BrowseCoursesPage({ onSelectCourse, searchQuery, setSear
             <Sparkles className="w-3.5 h-3.5" /> G.C.E. O/L & A/L Science Catalog
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold font-heading">
-            Browse Interactive Science Courses
+            Browse Science Courses
           </h1>
           <p className="text-sm text-slate-300 font-sans">
-            Filter by Biology, Chemistry, Physics, or 10-Year Past Paper revisions guided by Lecturer Thisula.
+            Filter by Chemistry, Physics, Biology, or Past Paper Discussion revisions guided by Lecturer Thisula.
           </p>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function BrowseCoursesPage({ onSelectCourse, searchQuery, setSear
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search by topic, e.g., Cell Biology, Refraction, Atomic Model..."
+            placeholder="Search by topic, e.g., Biology, Chemistry, Physics, Past Paper..."
             className="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-800 dark:text-slate-100"
           />
         </div>
@@ -72,7 +72,7 @@ export default function BrowseCoursesPage({ onSelectCourse, searchQuery, setSear
           {/* Subject Pills */}
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-bold text-slate-500 flex items-center gap-1 mr-1">
-              <Filter className="w-3.5 h-3.5" /> Subject:
+              <Filter className="w-3.5 h-3.5" /> Category:
             </span>
             {subjects.map(subj => (
               <button
